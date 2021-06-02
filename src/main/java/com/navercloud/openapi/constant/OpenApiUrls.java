@@ -40,4 +40,12 @@ public class OpenApiUrls {
 	// ACG
 	public static final String GET_ACG_DETAIL = VPC_SERVER + "/getAccessControlGroupDetail";
 	public static final String CREATE_ACG = VPC_SERVER + "/createAccessControlGroup";
+
+	// NAS
+	private static final String VPC_NAS = "/vnas/v2";
+	public static final String GET_NAS_LIST = VPC_NAS + "/getNasVolumeInstanceList";
+	public static final String GET_NAS_DETAIL = VPC_NAS + "/getNasVolumeInstanceDetail";
+	public static final String CREATE_NAS = VPC_NAS + "/createNasVolumeInstance";
+	public static final String DELETE_NAS = VPC_NAS + "/deleteNasVolumeInstances";
+	public static final String CHANGE_NAS_VOLUME_SIZE = VPC_NAS + "/changeNasVolumeSize";
 }

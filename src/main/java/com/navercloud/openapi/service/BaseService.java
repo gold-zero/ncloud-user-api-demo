@@ -13,15 +13,20 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.client.builder.AwsClientBuilder;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.navercloud.openapi.constant.OpenApiHeader;
 
 public class BaseService {
 	@Value("${open.api.access.key}")
-	private String accessKey;
+	protected String accessKey;
 
 	@Value("${open.api.secret.key}")
-	private String secretKey;
+	protected String secretKey;
 
 	@Autowired
 	protected ObjectMapper objectMapper;
@@ -66,5 +71,12 @@ public class BaseService {
 		String encodeBase64String = Base64.encodeBase64String(rawHmac);
 
 		return encodeBase64String;
+	}
+
+	public AmazonS3 createAmazoneS3(String regionName, String endPoint) {
+		return AmazonS3ClientBuilder.standard()
+			.withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endPoint, regionName))
+			.withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
+			.build();
 	}
 }

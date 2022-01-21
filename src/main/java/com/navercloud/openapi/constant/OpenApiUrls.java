@@ -48,4 +48,10 @@ public class OpenApiUrls {
 	public static final String CREATE_NAS = VPC_NAS + "/createNasVolumeInstance";
 	public static final String DELETE_NAS = VPC_NAS + "/deleteNasVolumeInstances";
 	public static final String CHANGE_NAS_VOLUME_SIZE = VPC_NAS + "/changeNasVolumeSize";
+
+	// CloudDB
+	private static final String CLASSIC_CLOUD_DB = "/clouddb/v2";
+	public static final String GET_CLOUD_DB_INSTANCE_LIST = CLASSIC_CLOUD_DB + "/getCloudDBInstanceList";
+	public static final String EXPORT_BACKUP_TO_OBJECT_STORAGE = CLASSIC_CLOUD_DB + "/exportBackupToObjectStorage";
+	public static final String GET_CLOUD_DB_BACKUP_DETAIL_LIST = CLASSIC_CLOUD_DB + "/getCloudDBBackupDetailList";
 }
